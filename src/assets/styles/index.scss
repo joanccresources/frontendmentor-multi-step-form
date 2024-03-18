@@ -4,13 +4,13 @@
 
 @layer base {
   :root {
-    --font-roboto: "Roboto", sans-serif;
+    --font-ubuntu: "ubuntu", sans-serif;
   }
   body {
-    @apply font-roboto;
+    @apply font-ubuntu;
   }
   input:focus-visible {
-    outline: none;
+    outline-color: initial;
   }
 }
 

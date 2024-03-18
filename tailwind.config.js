@@ -29,19 +29,23 @@ export default {
     /*---End Addapter to bootstrap breakpoints---*/
     extend: {
       colors: {
-        "bcp-orange": "#ff7800",
-        "bcp-blue-1": "#007aff",
-        "bcp-blue-2": "#002A8D",
-        "bcp-gray-1": "#202E44",
-        "bcp-gray-2": "#4D5B70",
-        "bcp-gray-3": "#868F9E",
-        "bcp-gray-4": "#7F95B1",
-
         "jc-primary": "#262335",
         "jc-secondary": "#241B2F",
+        // Primary
+        "marine-blue": "hsl(213, 96%, 18%)",
+        "purplish-blue": "hsl(243, 100%, 62%)",
+        "pastel-blue": "hsl(228, 100%, 84%)",
+        "light-blue": "hsl(206, 94%, 87%)",
+        "strawberry-red": "hsl(354, 84%, 57%)",
+        // Neutral
+        "cool-gray": "hsl(231, 11%, 63%)",
+        "light-gray": "hsl(229, 24%, 87%)",
+        magnolia: "hsl(217, 100%, 97%)",
+        alabaster: "hsl(231, 100%, 99%)",
+        white: "hsl(0, 0%, 100%)",
       },
       fontFamily: {
-        roboto: ["var(--font-roboto)"],
+        ubuntu: ["var(--font-ubuntu)"],
       },
     },
   },
