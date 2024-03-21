@@ -1,19 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { dataNavbar } from "@/data";
 import { SideBarList } from "./SideBarList";
+import { optionSteps } from "@/domain";
 
 interface IProps {
   className?: string;
-  setComponentStep: (Component: React.FC) => void;
+  currentStep: optionSteps;
+  handleCurrentStep: (amount: optionSteps) => void;
 }
 
-export const SideBar = ({ className = "", setComponentStep }: IProps) => {
-  const [isActive, setIsActive] = useState<number>(0);
+export const SideBar = ({
+  className = "",
+  currentStep,
+  handleCurrentStep,
+}: IProps) => {
+  const [isActive, setIsActive] = useState<optionSteps>(currentStep);
 
-  const handleNavbarActive = (i: number, Component: React.FC) => () => {
+  const handleNavbarActive = (i: optionSteps) => {
     setIsActive(i);
-    setComponentStep(Component);
+    handleCurrentStep(i);
   };
+
+  useEffect(() => {
+    handleNavbarActive(currentStep);
+  }, [currentStep]);
 
   return (
     <aside
@@ -24,11 +34,9 @@ export const SideBar = ({ className = "", setComponentStep }: IProps) => {
           <SideBarList
             key={data.id}
             {...data}
-            index={i}
+            index={i as optionSteps}
             isActive={isActive}
-            setIsActive={(i: number, Component: React.FC) =>
-              handleNavbarActive(i, Component)
-            }
+            setIsActive={handleNavbarActive}
           />
         ))}
       </ul>

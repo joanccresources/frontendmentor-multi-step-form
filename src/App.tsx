@@ -1,32 +1,59 @@
 import { useState } from "react";
-import { SideBar, StepYourInfo } from "@/shared/components";
+import {
+  Container,
+  SideBar,
+  StepAddOns,
+  StepSelectPlan,
+  StepSummary,
+  StepYourInfo,
+} from "@/shared/components";
+
+import { IFormValues, optionSteps } from "./domain";
+
+const initialValues: IFormValues = {
+  name: "",
+  email: "",
+  phoneNumber: "",
+  plan: "arcade",
+  timePlan: "Monthly",
+  checkAddOns: [],
+};
 
 export const App = () => {
-  const [componentStep, setComponentStep] = useState<React.ReactNode>(
-    <StepYourInfo />
-  );
+  const [data, setData] = useState<IFormValues>(initialValues);
+  const [currentStep, setCurrentStep] = useState<optionSteps>(0);
 
-  const handleComponentStep = (Component: React.FC) => {
-    setComponentStep(<Component />);
+  const changeStep = (data: IFormValues, amount: number) => {
+    setData((prev) => ({ ...prev, ...data }));
+    setCurrentStep((prev) => (prev + amount) as optionSteps);    
   };
 
+  const handleCurrentStep = (amount: optionSteps) => {
+    setCurrentStep(amount);
+  };
+
+  const steps = [
+    <StepYourInfo changeStep={changeStep} data={data} />,
+    <StepSelectPlan changeStep={changeStep} data={data} />,
+    <StepAddOns changeStep={changeStep} data={data} />,
+    <StepSummary changeStep={changeStep} data={data} />,
+  ];
+
   return (
-    <main className="min-h-screen bg-alabaster">
-      <div className="container">
-        <div className="grid grid-cols-12 gap-4">
-          <div className="col-span-12">
-            <div className="h-[600px] max-w-[940px] mx-auto mt-[30px] xl:mt-[52.5px] 2xl:mt-[105px]">
-              <div className="h-full p-4 bg-white rounded-lg flex">
-                <SideBar
-                  className="w-full max-w-[274px]"
-                  setComponentStep={handleComponentStep}
-                />
-                <div className="w-full pl-[100px] pr-[calc(100px-16px)]">{componentStep}</div>
-              </div>
-            </div>
-          </div>
+    <>
+      <pre className="absolute left-8 top-0 text-xs">
+        <code>{JSON.stringify(data, null, 2)}</code>
+      </pre>
+      <Container className="min-h-screen bg-alabaster">
+        <SideBar
+          className="w-full max-w-[274px]"
+          currentStep={currentStep}
+          handleCurrentStep={handleCurrentStep}
+        />
+        <div className="w-full pl-[100px] pr-[calc(100px-16px)]">
+          {steps[currentStep]}
         </div>
-      </div>
-    </main>
+      </Container>
+    </>
   );
 };

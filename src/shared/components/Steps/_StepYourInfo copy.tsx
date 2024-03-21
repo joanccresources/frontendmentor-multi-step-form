@@ -1,12 +1,21 @@
-import { Form, Formik } from "formik";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
 import { TextField } from "..";
 import { Button } from "../Button";
-import { IFormValues, IStep } from "@/domain";
 
-export const StepYourInfo: React.FC<IStep> = ({ changeStep, data }) => {
-  const handleSubmit = (values: IFormValues) => {
-    changeStep(values, 1);
-  };
+interface IFormValues {
+  name: string;
+  email: string;
+  phoneNumber: string;
+}
+
+const initialValues: IFormValues = {
+  name: "",
+  email: "",
+  phoneNumber: "",
+};
+
+export const StepYourInfo: React.FC = () => {
   return (
     <div className="mt-11">
       <h2 className="text-[2.1rem]/none inline-block text-marine-blue font-bold">
@@ -15,8 +24,28 @@ export const StepYourInfo: React.FC<IStep> = ({ changeStep, data }) => {
       <p className="text-base/none mt-5 text-cool-gray">
         Please provide your name, email address, and phone number.
       </p>
-      <Formik initialValues={data} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+        validationSchema={Yup.object({
+          // Los names y propiedades de initialValues deben ser iguales
+          name: Yup.string()
+            .max(45, "Debe tener 15 caracteres o menos")
+            .required("This field is required"),
+          email: Yup.string()
+            .email("It must be a valid email")
+            .required("This field is required"),
+          phoneNumber: Yup.string()
+            .matches(/^[0-9]+$/, "Must be only digits")
+            .min(9, "Must be exactly 9 digits")
+            .max(9, "Must be exactly 9 digits")
+            .required("This field is required"),
+        })}
+      >
         {() => (
+          // Elementos no deben tener "required"
           <Form className="mt-11">
             <TextField
               label="Name"
