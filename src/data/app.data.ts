@@ -1,7 +1,9 @@
 import {
+  IFormValues,
   IcardAddOns,
   IcardPlan,
   Inavbar,
+  typeAddOns,
   typePlan,
   typeTimePlan,
 } from "@/domain";
@@ -31,22 +33,34 @@ export const dataNavbar: Inavbar[] = [
 
 export const pricePlan: Record<typeTimePlan, Record<typePlan, number>> = {
   Monthly: {
-    arcade: 9,
-    advanced: 12,
-    pro: 15,
+    Arcade: 9,
+    Advanced: 12,
+    Pro: 15,
   },
   Yearly: {
-    arcade: 9,
-    advanced: 12,
-    pro: 15,
+    Arcade: 9,
+    Advanced: 12,
+    Pro: 15,
   },
+};
+
+export const priceAddOns: Record<typeAddOns, number> = {
+  online: 1,
+  larger: 2,
+  customizable: 2,
+};
+
+export const addOnsData: Record<typeAddOns, string> = {
+  online: "Online service",
+  larger: "Larger storage",
+  customizable: "Customizable profile",
 };
 
 export const cardPlans: IcardPlan[] = [
   {
     id: "arcade",
     name: "plan",
-    value: "arcade",
+    value: "Arcade",
     className: "",
     img: "/icon-arcade.svg",
     title: "Arcade",
@@ -59,7 +73,7 @@ export const cardPlans: IcardPlan[] = [
     name: "plan",
     img: "/icon-advanced.svg",
     title: "Advanced",
-    value: "advanced",
+    value: "Advanced",
     price: 12,
     textPrice: "/mo",
     time: "2 months free",
@@ -69,7 +83,7 @@ export const cardPlans: IcardPlan[] = [
     name: "plan",
     img: "/icon-pro.svg",
     title: "Pro",
-    value: "pro",
+    value: "Pro",
     price: 15,
     textPrice: "/mo",
     time: "2 months free",
@@ -105,3 +119,12 @@ export const cardAddOns: IcardAddOns[] = [
     value: "customizable",
   },
 ];
+
+export const initialValues: IFormValues = {
+  name: "",
+  email: "",
+  phoneNumber: "",
+  plan: "Arcade",
+  timePlan: "Monthly",
+  checkAddOns: [],
+};

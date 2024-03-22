@@ -16,7 +16,7 @@ export const CardPickAddOns = ({
     <div className={className}>
       <label
         htmlFor={restProps.id}
-        className="px-6 py-[18px] cursor-pointer rounded-lg flex items-center justify-between outline outline-1 outline-light-gray has-[:checked]:outline-pastel-blue has-[:checked]:bg-alabaster hover:outline-pastel-blue"
+        className="px-6 py-[18px] cursor-pointer rounded-lg flex items-center justify-between outline outline-1 outline-light-gray has-[:checked]:outline-pastel-blue has-[:checked]:bg-magnolia hover:outline-pastel-blue"
       >
         <div className="flex gap-x-6">
           <div className="relative flex items-center cursor-pointer">

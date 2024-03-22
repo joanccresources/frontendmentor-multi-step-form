@@ -19,7 +19,7 @@ export const TogglePlan = ({
 
   return (
     <div
-      className={`${className} space-x-3 flex items-center justify-center bg-alabaster rounded-lg h-12 font-medium text-cool-gray group`}
+      className={`${className} space-x-3 flex items-center justify-center bg-magnolia rounded-lg h-12 font-medium text-cool-gray group`}
     >
       <input
         {...field}

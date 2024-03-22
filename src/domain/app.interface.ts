@@ -6,9 +6,9 @@ export interface Inavbar {
 }
 
 export type optionSteps = 0 | 1 | 2 | 3;
-export type typePlan = "arcade" | "advanced" | "pro";
-export type typeAddOns = "online" | "larger" | "customizable";
+export type typePlan = "Arcade" | "Advanced" | "Pro";
 export type typeTimePlan = "Monthly" | "Yearly";
+export type typeAddOns = "online" | "larger" | "customizable";
 
 export interface IFormValues {
   name: string;
@@ -16,7 +16,7 @@ export interface IFormValues {
   phoneNumber: string;
   plan: typePlan;
   timePlan: typeTimePlan;
-  checkAddOns: string[];
+  checkAddOns: typeAddOns[];
 }
 export interface IStep {
   changeStep: (data: IFormValues, amount: number) => void;

@@ -27,16 +27,15 @@ export const SideBar = ({
 
   return (
     <aside
-      className={`${className} bg-[url('/bg-sidebar-desktop.svg')] bg-cover`}
+      className={`${className} bg-[url('bg-sidebar-mobile.svg')] bg-cover md:bg-[url('/bg-sidebar-desktop.svg')] `}
     >
-      <ul className="space-y-[30px] py-[40px] px-[30px]">
+      <ul className="flex justify-center gap-x-[15px] mt-8 mb-[106px] md:mt-0 md:mb-0 md:block md:space-y-[30px] md:py-[40px] md:px-[30px]">
         {dataNavbar.map((data, i) => (
           <SideBarList
-            key={data.id}
             {...data}
+            key={data.id}
             index={i as optionSteps}
             isActive={isActive}
-            setIsActive={handleNavbarActive}
           />
         ))}
       </ul>

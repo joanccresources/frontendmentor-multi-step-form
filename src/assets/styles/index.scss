@@ -7,7 +7,7 @@
     --font-ubuntu: "ubuntu", sans-serif;
   }
   body {
-    @apply font-ubuntu;
+    @apply font-ubuntu bg-magnolia;
   }
   input:focus-visible {
     outline-color: initial;

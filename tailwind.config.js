@@ -16,15 +16,14 @@ export default {
         "2xl": "calc(40px + 1rem)",
       },
       */
-      /*
-      screens: {
-        sm: "576px",
-        md: "768px",
-        lg: "992px",
-        xl: "1200px",
-        "2xl": "1400px",
-      },
-      */
+
+      // screens: {
+      //   sm: "576px",
+      //   md: "768px",
+      //   lg: "992px",
+      //   xl: "1200px",
+      //   "2xl": "1400px",
+      // },
     },
     /*---End Addapter to bootstrap breakpoints---*/
     extend: {
@@ -46,6 +45,9 @@ export default {
       },
       fontFamily: {
         ubuntu: ["var(--font-ubuntu)"],
+      },
+      screens: {
+        "3xl": "1900px",
       },
     },
   },
