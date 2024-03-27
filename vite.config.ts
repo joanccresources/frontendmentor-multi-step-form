@@ -9,4 +9,5 @@ export default defineConfig({
     },
   },
   plugins: [react()],
+  base: "https://joanccresources.github.io/frontendmentor-multi-step-form/",
 });
